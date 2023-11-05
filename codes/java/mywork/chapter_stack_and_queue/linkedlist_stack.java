@@ -6,6 +6,8 @@
 
 package mywork.chapter_stack_and_queue;
 
+import utils.MyException;
+
 import java.util.Arrays;
 
 /* 基于链表实现的栈 */
@@ -24,7 +26,7 @@ class LinkedListStack {
 
     /* 判断栈是否为空 */
     public boolean isEmpty() {
-        return size() == 0;
+        return stkSize == 0;
     }
 
     /* 入栈 */
@@ -37,28 +39,35 @@ class LinkedListStack {
 
     /* 出栈 */
     public int pop() {
-        int num = peek();
+        if (isEmpty()) {
+            throw new MyException("栈为空");
+        }
+        int result = stackPeek.val;
         stackPeek = stackPeek.next;
         stkSize--;
-        return num;
+        return result;
     }
 
     /* 访问栈顶元素 */
     public int peek() {
-        if (isEmpty())
-            throw new IndexOutOfBoundsException();
+        if (isEmpty()) {
+            throw new MyException("栈为空");
+        }
         return stackPeek.val;
     }
 
     /* 将 List 转化为 Array 并返回 */
     public int[] toArray() {
+        int[] result = new int[stkSize];
         ListNode node = stackPeek;
-        int[] res = new int[size()];
-        for (int i = res.length - 1; i >= 0; i--) {
-            res[i] = node.val;
+        for (int i = 0; i < stkSize; i++) {
+            if (null == node) {
+                break;
+            }
+            result[i] = node.val;
             node = node.next;
         }
-        return res;
+        return result;
     }
 }
 

@@ -6,6 +6,8 @@
 
 package mywork.chapter_stack_and_queue;
 
+import utils.MyException;
+
 import java.util.Arrays;
 
 /* 基于链表实现的队列 */
@@ -30,45 +32,50 @@ class LinkedListQueue {
 
     /* 入队 */
     public void push(int num) {
-        // 尾节点后添加 num
-        ListNode node = new ListNode(num);
-        // 如果队列为空，则令头、尾节点都指向该节点
-        if (front == null) {
-            front = node;
-            rear = node;
-        // 如果队列不为空，则将该节点添加到尾节点后
+        //判断是否为空，
+        if (isEmpty()) {
+            //初始化
+            front = new ListNode(num);
+            rear = front;
+            front.next = rear;
+            rear.prev = front;
         } else {
+            //初始化
+            ListNode node = new ListNode(num);
             rear.next = node;
             rear = node;
         }
         queSize++;
+
     }
 
     /* 出队 */
     public int pop() {
-        int num = peek();
-        // 删除头节点
+        if (isEmpty()) {
+            throw new MyException("队列为空");
+        }
+        //将尾节点
+        int result = front.val;
         front = front.next;
         queSize--;
-        return num;
+        return result;
+
     }
 
     /* 访问队首元素 */
     public int peek() {
-        if (isEmpty())
-            throw new IndexOutOfBoundsException();
         return front.val;
     }
 
     /* 将链表转化为 Array 并返回 */
     public int[] toArray() {
+        int[] result = new int[queSize];
         ListNode node = front;
-        int[] res = new int[size()];
-        for (int i = 0; i < res.length; i++) {
-            res[i] = node.val;
+        for (int i = 0; i < queSize; i++) {
+            result[i] = node.val;
             node = node.next;
         }
-        return res;
+        return result;
     }
 }
 
