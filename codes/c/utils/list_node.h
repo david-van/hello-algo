@@ -19,14 +19,14 @@ typedef struct ListNode {
 
 /* 构造函数，初始化一个新节点 */
 ListNode *newListNode(int val) {
-    ListNode *node, *next;
+    ListNode *node;
     node = (ListNode *)malloc(sizeof(ListNode));
     node->val = val;
     node->next = NULL;
     return node;
 }
 
-/* Generate a linked list with a vector */
+/* Generate a linked list with an array */
 ListNode *arrToLinkedList(const int *arr, size_t size) {
     if (size <= 0) {
         return NULL;
@@ -47,6 +47,17 @@ ListNode *getListNode(ListNode *head, int val) {
         head = head->next;
     }
     return head;
+}
+
+/* Free the memory allocated to a linked list */
+void freeMemoryLinkedList(ListNode *cur) {
+    // 释放内存
+    ListNode *pre;
+    while (cur != NULL) {
+        pre = cur;
+        cur = cur->next;
+        free(pre);
+    }
 }
 
 #ifdef __cplusplus

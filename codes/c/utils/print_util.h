@@ -1,7 +1,7 @@
 /**
  * File: print_util.h
  * Created Time: 2022-12-21
- * Author: MolDum (moldum@163.com)、Reanon (793584285@qq.com)
+ * Author: MolDum (moldum@163.com), Reanon (793584285@qq.com)
  */
 
 #ifndef PRINT_UTIL_H
@@ -35,7 +35,7 @@ static void printArray(int arr[], int size) {
             printf("NULL]\n");
         }
     } else {
-        printf("]");
+        printf("]\n");
     }
 }
 
@@ -95,7 +95,7 @@ void showTrunks(Trunk *trunk) {
 }
 
 /* Help to print a binary tree, hide more details */
-static void printTreeHelper(TreeNode *node, Trunk *prev, bool isLeft) {
+static void printTreeHelper(TreeNode *node, Trunk *prev, bool isRight) {
     if (node == NULL) {
         return;
     }
@@ -104,7 +104,7 @@ static void printTreeHelper(TreeNode *node, Trunk *prev, bool isLeft) {
     printTreeHelper(node->right, trunk, true);
     if (prev == NULL) {
         trunk->str = "———";
-    } else if (isLeft) {
+    } else if (isRight) {
         trunk->str = "/———";
         prev_str = "   |";
     } else {
@@ -133,7 +133,7 @@ static void printHeap(int arr[], int size) {
     printf("堆的数组表示：");
     printArray(arr, size);
     printf("堆的树状表示：\n");
-    root = arrToTree(arr, size);
+    root = arrayToTree(arr, size);
     printTree(root);
 }
 
