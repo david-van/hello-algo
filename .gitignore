@@ -5,9 +5,10 @@
 .vscode/
 **/.idea
 
+*.iml
 # mkdocs files
 .cache/
-
+/out
 # build
 /build
 /site
