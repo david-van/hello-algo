@@ -52,10 +52,9 @@
 
     ```csharp title=""
     /* 链表节点类 */
-    class ListNode {
-        int val;         // 节点值
-        ListNode next;   // 指向下一节点的引用
-        ListNode(int x) => val = x;  //构造函数
+    class ListNode(int x) {  //构造函数
+        int val = x;         // 节点值
+        ListNode? next;      // 指向下一节点的引用
     }
     ```
 
@@ -152,7 +151,7 @@
 
     /* 构造函数 */
     ListNode *newListNode(int val) {
-        ListNode *node, *next;
+        ListNode *node;
         node = (ListNode *) malloc(sizeof(ListNode));
         node->val = val;
         node->next = NULL;
@@ -439,15 +438,14 @@
 
 <p align="center"> 表 <id> &nbsp; 数组与链表的效率对比 </p>
 
-|            | 数组                     | 链表         |
-| ---------- | ------------------------ | ------------ |
-| 存储方式   | 连续内存空间             | 分散内存空间 |
-| 缓存局部性 | 友好                     | 不友好       |
-| 容量扩展   | 长度不可变               | 可灵活扩展   |
-| 内存效率   | 占用内存少、浪费部分空间 | 占用内存多   |
-| 访问元素   | $O(1)$                   | $O(n)$       |
-| 添加元素   | $O(n)$                   | $O(1)$       |
-| 删除元素   | $O(n)$                   | $O(1)$       |
+|          | 数组                           | 链表           |
+| -------- | ------------------------------ | -------------- |
+| 存储方式 | 连续内存空间                   | 分散内存空间   |
+| 容量扩展 | 长度不可变                     | 可灵活扩展     |
+| 内存效率 | 元素占用内存少、但可能浪费空间 | 元素占用内存多 |
+| 访问元素 | $O(1)$                         | $O(n)$         |
+| 添加元素 | $O(n)$                         | $O(1)$         |
+| 删除元素 | $O(n)$                         | $O(1)$         |
 
 ## 常见链表类型
 
@@ -496,11 +494,10 @@
 
     ```csharp title=""
     /* 双向链表节点类 */
-    class ListNode {
-        int val;        // 节点值
+    class ListNode(int x) {  // 构造函数
+        int val = x;    // 节点值
         ListNode next;  // 指向后继节点的引用
         ListNode prev;  // 指向前驱节点的引用
-        ListNode(int x) => val = x;  // 构造函数
     }
     ```
 
@@ -618,7 +615,7 @@
 
     /* 构造函数 */
     ListNode *newListNode(int val) {
-        ListNode *node, *next;
+        ListNode *node;
         node = (ListNode *) malloc(sizeof(ListNode));
         node->val = val;
         node->next = NULL;
