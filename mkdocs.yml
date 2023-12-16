@@ -30,7 +30,7 @@ theme:
     # - header.autohide
     # - navigation.expand
     - navigation.indexes
-    - navigation.instant
+    # - navigation.instant
     # - navigation.prune
     # - navigation.sections
     # - navigation.tabs
@@ -64,7 +64,7 @@ theme:
   icon:
     logo: logo
     repo: fontawesome/brands/github
-    edit: material/file-edit-outline
+    edit: fontawesome/regular/pen-to-square
 
 extra:
   alternate:

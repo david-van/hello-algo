@@ -16,8 +16,3 @@
 
 # test script
 test.sh
-
-# overrides
-overrides/partials/*
-!overrides/partials/content.html
-!overrides/partials/footer.html
