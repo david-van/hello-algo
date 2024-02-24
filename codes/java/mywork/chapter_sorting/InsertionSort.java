@@ -23,7 +23,22 @@ public class InsertionSort {
         //插入排序，将未排序的数据添加到已经排序好的区间内，
         int length = nums.length;
         for (int i = 1; i < length; i++) {
-            addCorrectPosition(nums, 0, i);
+            int temp = nums[i];
+            //已排序的数组为[0,i-1]
+            int j = i - 1;
+            while (j >= 0) {
+                if (nums[j] > temp) {
+                    //该处的数组值进行右移
+                    nums[j + 1] = nums[j];
+                } else {
+                    //说明此处的数组已经小于待排序的值了，也就不用再将数组的值进行右移，跳出循环
+                    break;
+                }
+                //索引位左移
+                j--;
+            }
+            //将待排序的值放在正确的索引位上面
+            nums[j + 1] = temp;
         }
     }
 
@@ -41,29 +56,9 @@ public class InsertionSort {
                 nums[j + 1] = nums[j]; // 将 nums[j] 向右移动一位
                 j--;
             }
-            nums[j + 1] = base;        // 将 base 赋值到正确位置
+            // 将 base 赋值到正确位置
+            nums[j + 1] = base;
         }
-        List<Integer> list = new ArrayList<>();
-        list.add(2, 222);
-    }
-
-    private static void addCorrectPosition(int[] num, int start, int end) {
-        //end索引位置就是需要进行赋值的位置，
-        int value = num[end];
-        //使用倒序循环，应该比正向循环更有优化
-//        0 3 5 2
-
-        for (; start < end; start++) {
-            if (num[start] > value) {
-                break;
-            }
-        }
-        //此时 start 即为将要插入的index
-//        从start-->end 进行逐个右移，
-        for (int i = end - 1; i > start; i--) {
-            num[end] = num[end - 1];
-        }
-        num[start] = value;
     }
 
 }

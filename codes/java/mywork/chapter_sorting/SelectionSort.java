@@ -1,7 +1,6 @@
 package mywork.chapter_sorting;
 
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * 选择排序
@@ -28,14 +27,14 @@ public class SelectionSort {
             }
             //说明当前值不为最小值，进行交换
             if (minIndex != i) {
-                change(nums, minIndex, i);
+                swap(nums, minIndex, i);
             }
         }
     }
 
-    private static void change(int[] nums, int minIndex, int i) {
-        int temp = nums[minIndex];
-        nums[minIndex] = nums[i];
-        nums[i] = temp;
+    private static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
